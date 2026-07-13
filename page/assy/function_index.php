@@ -242,13 +242,6 @@ if (isset($_POST['btn_finish'])) {
     mysqli_begin_transaction($conn);
 
     try {
-        $stockCheck = mysqli_query($conn, "
-            SELECT qty_paint FROM part WHERE part_code='$partCode'
-        ");
-        $stock = (int)mysqli_fetch_assoc($stockCheck)['qty_paint'];
-
-        if ($stock < $qty) throw new Exception('Stock paint tidak cukup');
-
         mysqli_query($conn, "
             INSERT INTO `transaction`
             (part_code, date_tr, shift, qty, status)
