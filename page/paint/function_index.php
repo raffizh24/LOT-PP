@@ -271,58 +271,5 @@ if (isset($_POST['btn_finish'])) {
         exit;
     }
 }
-
-// VOUCHER
-if (isset($_POST['btn_voucher'])) {
-
-    $partCode = $_POST['part_code'] ?? '';
-    $area = $_POST['area'] ?? '';
-    $qty  = (int)($_POST['qty'] ?? 0);
-
-    if ($partCode === '' || $qty <= 0) {
-        echo "<script>alert('Input tidak valid');history.back();</script>";
-        exit;
-    }
-
-    mysqli_begin_transaction($conn);
-
-    try {
-        $c = mysqli_query($conn, "
-            SELECT id FROM history_ls
-            WHERE part_code='$partCode'
-            AND DATE_FORMAT(date_prod,'%Y-%m')='$prodMonth'
-        ");
-
-        if (mysqli_num_rows($c) > 0) {
-            mysqli_query($conn, "
-                UPDATE history_ls
-                SET qty_bk_{$area} = qty_bk_{$area} + $qty
-                WHERE part_code='$partCode'
-                AND DATE_FORMAT(date_prod,'%Y-%m')='$prodMonth'
-            ");
-        } else {
-            mysqli_query($conn, "
-                INSERT INTO history_ls
-                (date_prod, part_code, qty_bk_{$area})
-                VALUES
-                ('$productionDate','$partCode',$qty)
-            ");
-        }
-
-        mysqli_query($conn, "
-            UPDATE part
-            SET qty_{$area} = qty_{$area} - $qty
-            WHERE part_code='$partCode'
-        ");
-
-        mysqli_commit($conn);
-        echo "<script>alert('Voucher sukses');location.href='index.php';</script>";
-        exit;
-    } catch (Exception $e) {
-        mysqli_rollback($conn);
-        echo "<script>alert('ERROR: {$e->getMessage()}');history.back();</script>";
-        exit;
-    }
-}
 ?>
 <!-- @raffizh24 -->

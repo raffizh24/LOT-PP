@@ -102,7 +102,7 @@ foreach (['PRESS', 'PAINT', 'ASSY'] as $st) {
 }
 
 /* ===============================
-   HISTORY LS (END STOCK + VOUCHER)
+   HISTORY LS (END STOCK)
 ================================ */
 $historyLS = [];
 $qLS = mysqli_query($conn, "

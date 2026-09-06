@@ -113,14 +113,6 @@ require 'function_index.php';
                                 <button type="button" class="btn btn-sm btn-outline w-100" disabled><?= $data['shift3_assy'] ?></button>
                             </div>
 
-                            <!-- Total BK -->
-                            <div class="d-flex justify-content-center mt-2">
-                                <button type="button" class="btn btn-sm btn-outline-warning w-100 me-1" disabled>Total Voucher</button>
-                                <button type="button" class="btn btn-sm btn-outline-warning w-100 me-1" disabled><?= $data['qty_bk_press'] ?></button>
-                                <button type="button" class="btn btn-sm btn-outline-warning w-100 me-1" disabled><?= $data['qty_bk_paint'] ?></button>
-                                <button type="button" class="btn btn-sm btn-outline-warning w-100" disabled><?= $data['qty_bk_assy'] ?></button>
-                            </div>
-
                             <!-- Live Stock -->
                             <div class="d-flex justify-content-center mt-2">
                                 <button type="button" class="btn btn-sm btn-outline-success w-100 me-1" disabled>Live Stock</button>
@@ -157,49 +149,6 @@ require 'function_index.php';
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                                     <button type="submit" class="btn btn-primary" name="btn_finish">Submit</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Button BK Production -->
-                            <div class="d-flex justify-content-center mt-2">
-                                <!-- <button type="button" class="btn btn-sm btn-warning w-100" data-bs-toggle="modal" data-bs-target="#InputBKModal<?= $data['part_code'] ?>">Blue & Yellow Voucher</button> -->
-                                <div class="modal fade" id="InputBKModal<?= $data['part_code'] ?>" tabindex="-1" aria-labelledby="InputBKModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <form action="" method="post">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="InputBKModalLabel">Blue & Yellow Voucher</h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" readonly value="<?= $data['part_code'] ?>" name="part_code">
-                                                        <label for="floatingInput">Part Code</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" readonly value="<?= $data['part_name'] ?>" name="part_name">
-                                                        <label for="floatingInput">Part Name</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <select name="area" class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                                            <option value="press">PRESS</option>
-                                                            <option value="paint">PAINT</option>
-                                                            <option value="assy">ASSY</option>
-                                                        </select>
-                                                        <label for="floatingSelect">Area</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" name="qty">
-                                                        <label for="floatingInput">Qty</label>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                    <button type="submit" class="btn btn-primary" name="btn_voucher">Submit</button>
                                                 </div>
                                             </form>
                                         </div>
